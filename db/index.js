@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/Activity_Tracker', {
+mongoose.connect('mongodb+srv://dhavalgediya:Dpatel123@realmcluster.tnwo1.mongodb.net/studentdashboard?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
