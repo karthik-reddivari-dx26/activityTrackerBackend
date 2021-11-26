@@ -3,6 +3,14 @@ const Activity = require('../../model/activity/activity.model')
 const createActivity = async (req, res) => {
     try {
         let params = req.body
+        if(params.title){
+            let activities = await Activity.find({ userId: req.body.userId }).populate('userId')
+            for(let activity of activities){
+                if(activity.title == params.title){
+                    return res.json({ error: 'You cant add duplicate entry ' })
+                }
+            }
+        }
         let activity = await Activity.create(params)
         return res.status(200).json(activity);
     } catch (error) {
